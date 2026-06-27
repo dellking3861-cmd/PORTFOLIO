@@ -172,8 +172,8 @@ ul {
     z-index: 1000;
     padding: 16px 0;
     background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
 }
@@ -464,8 +464,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     transition: all var(--transition-base);
 }
 
@@ -605,8 +605,8 @@ ul {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     margin-bottom: 32px;
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-left: 3px solid var(--cyan);
 }
 
@@ -678,8 +678,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -760,8 +760,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     transition: all var(--transition-base);
     text-align: center;
 }
@@ -808,11 +808,22 @@ ul {
 
 .skill-progress {
     height: 100%;
+    width: var(--progress, 0%);
     border-radius: 4px;
     background: var(--gradient-1);
     transition: width 1.5s ease;
     position: relative;
 }
+
+.progress-65 { --progress: 65%; }
+.progress-75 { --progress: 75%; }
+.progress-80 { --progress: 80%; }
+.progress-82 { --progress: 82%; }
+.progress-85 { --progress: 85%; }
+.progress-88 { --progress: 88%; }
+.progress-90 { --progress: 90%; }
+.progress-92 { --progress: 92%; }
+.progress-95 { --progress: 95%; }
 
 .skill-progress::after {
     content: '';
@@ -865,8 +876,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     overflow: hidden;
     transition: all var(--transition-base);
 }
@@ -1046,8 +1057,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     position: relative;
 }
 
@@ -1146,8 +1157,8 @@ ul {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     transition: all var(--transition-base);
     text-align: left;
 }
@@ -1312,10 +1323,29 @@ ul {
     100% { background-position: 0% 50%; }
 }
 
-/* Scroll Animation Base */
-.section-container > * {
-    animation: fadeInUp 0.8s ease forwards;
+/* Screen-reader only utility class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Scroll Animation Base - triggered by JS IntersectionObserver */
+section {
     opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ==========================================
@@ -1346,8 +1376,8 @@ ul {
         right: 0;
         flex-direction: column;
         background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
         padding: 24px;
         gap: 16px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1455,30 +1485,52 @@ ul {
     }
 }
 
-/* Mobile Navigation Toggle - using checkbox hack for no-JS */
-.nav-toggle {
-    display: none;
+/* Nav toggle active state for hamburger animation */
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        padding: 4px;
-        z-index: 1001;
-    }
-
-    .nav-toggle span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: var(--text-primary);
-        border-radius: 2px;
-        transition: all var(--transition-base);
-    }
-
-    /* Note: Mobile menu toggle requires JavaScript for full functionality.
-       Without JS, the menu links still work for navigation. */
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
 }
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==========================================
+    14. Image Styles
+    ========================================== */
+
+/* Navigation logo image */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo .logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+/* About section image */
+.about-image-placeholder .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Footer logo image */
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-logo .footer-logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 4px;
+}
+
