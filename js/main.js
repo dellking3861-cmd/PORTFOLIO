@@ -100,3 +100,33 @@ window.addEventListener('scroll', () => {
 
     lastScroll = currentScroll;
 });
+
+// Enhanced scroll observer for staggered animations with better threshold
+const staggerObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+};
+
+const staggerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            staggerObserver.unobserve(entry.target);
+        }
+    });
+}, staggerObserverOptions);
+
+// Observe grids inside sections for staggered child animations
+document.querySelectorAll('.skills-grid, .experience-grid, .projects-grid, .contact-channels').forEach(grid => {
+    staggerObserver.observe(grid);
+});
+
+// Smooth reveal on page load for hero section
+window.addEventListener('load', () => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        setTimeout(() => {
+            hero.classList.add('visible');
+        }, 100);
+    }
+});

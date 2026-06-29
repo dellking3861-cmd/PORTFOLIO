@@ -1348,9 +1348,325 @@ section.visible {
     transform: translateY(0);
 }
 
+/* Staggered child animations inside sections */
+.section-header,
+.section-tag,
+.section-title,
+.section-divider {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible .section-header,
+section.visible .section-tag,
+section.visible .section-title,
+section.visible .section-divider {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section.visible .section-tag {
+    transition-delay: 0.1s;
+}
+
+section.visible .section-title {
+    transition-delay: 0.2s;
+}
+
+section.visible .section-divider {
+    transition-delay: 0.3s;
+}
+
+
 /* ==========================================
    13. Responsive Design
    ========================================== */
+
+
+
+/* Skill card staggered animations */
+.skill-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.visible .skill-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+section.visible .skill-card:nth-child(1) { transition-delay: 0.1s; }
+section.visible .skill-card:nth-child(2) { transition-delay: 0.15s; }
+section.visible .skill-card:nth-child(3) { transition-delay: 0.2s; }
+section.visible .skill-card:nth-child(4) { transition-delay: 0.25s; }
+section.visible .skill-card:nth-child(5) { transition-delay: 0.3s; }
+section.visible .skill-card:nth-child(6) { transition-delay: 0.35s; }
+section.visible .skill-card:nth-child(7) { transition-delay: 0.4s; }
+section.visible .skill-card:nth-child(8) { transition-delay: 0.45s; }
+section.visible .skill-card:nth-child(9) { transition-delay: 0.5s; }
+section.visible .skill-card:nth-child(10) { transition-delay: 0.55s; }
+section.visible .skill-card:nth-child(11) { transition-delay: 0.6s; }
+section.visible .skill-card:nth-child(12) { transition-delay: 0.65s; }
+
+/* Skill icon pop + spin entrance animation */
+.skill-icon { transition: all 0.5s ease; }
+
+.skill-card .skill-icon svg {
+    transition: transform 0.6s ease, color 0.6s ease;
+}
+
+section.visible .skill-card .skill-icon svg {
+    animation: skillIconPop 0.6s ease forwards;
+}
+
+@keyframes skillIconPop {
+    0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+section.visible .skill-card:nth-child(1) .skill-icon svg { animation-delay: 0.2s; }
+section.visible .skill-card:nth-child(2) .skill-icon svg { animation-delay: 0.25s; }
+section.visible .skill-card:nth-child(3) .skill-icon svg { animation-delay: 0.3s; }
+section.visible .skill-card:nth-child(4) .skill-icon svg { animation-delay: 0.35s; }
+section.visible .skill-card:nth-child(5) .skill-icon svg { animation-delay: 0.4s; }
+section.visible .skill-card:nth-child(6) .skill-icon svg { animation-delay: 0.45s; }
+section.visible .skill-card:nth-child(7) .skill-icon svg { animation-delay: 0.5s; }
+section.visible .skill-card:nth-child(8) .skill-icon svg { animation-delay: 0.55s; }
+section.visible .skill-card:nth-child(9) .skill-icon svg { animation-delay: 0.6s; }
+section.visible .skill-card:nth-child(10) .skill-icon svg { animation-delay: 0.65s; }
+section.visible .skill-card:nth-child(11) .skill-icon svg { animation-delay: 0.7s; }
+section.visible .skill-card:nth-child(12) .skill-icon svg { animation-delay: 0.75s; }
+
+/* Skill progress bar fill animation */
+.skill-progress {
+    width: 0% !important;
+    transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+section.visible .skill-progress {
+    width: var(--progress, 0%) !important;
+}
+
+section.visible .skill-card:nth-child(1) .skill-progress { transition-delay: 0.3s; }
+section.visible .skill-card:nth-child(2) .skill-progress { transition-delay: 0.35s; }
+section.visible .skill-card:nth-child(3) .skill-progress { transition-delay: 0.4s; }
+section.visible .skill-card:nth-child(4) .skill-progress { transition-delay: 0.45s; }
+section.visible .skill-card:nth-child(5) .skill-progress { transition-delay: 0.5s; }
+section.visible .skill-card:nth-child(6) .skill-progress { transition-delay: 0.55s; }
+section.visible .skill-card:nth-child(7) .skill-progress { transition-delay: 0.6s; }
+section.visible .skill-card:nth-child(8) .skill-progress { transition-delay: 0.65s; }
+section.visible .skill-card:nth-child(9) .skill-progress { transition-delay: 0.7s; }
+section.visible .skill-card:nth-child(10) .skill-progress { transition-delay: 0.75s; }
+section.visible .skill-card:nth-child(11) .skill-progress { transition-delay: 0.8s; }
+section.visible .skill-card:nth-child(12) .skill-progress { transition-delay: 0.85s; }
+
+
+
+
+/* Experience card staggered animations */
+.exp-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible .exp-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+section.visible .exp-card:nth-child(1) { transition-delay: 0.1s; }
+section.visible .exp-card:nth-child(2) { transition-delay: 0.2s; }
+section.visible .exp-card:nth-child(3) { transition-delay: 0.3s; }
+section.visible .exp-card:nth-child(4) { transition-delay: 0.4s; }
+
+/* Project card staggered animations */
+.project-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.visible .project-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+section.visible .project-card:nth-child(1) { transition-delay: 0.1s; }
+section.visible .project-card:nth-child(2) { transition-delay: 0.2s; }
+section.visible .project-card:nth-child(3) { transition-delay: 0.3s; }
+section.visible .project-card:nth-child(4) { transition-delay: 0.4s; }
+section.visible .project-card:nth-child(5) { transition-delay: 0.5s; }
+
+/* Contact card staggered animations */
+.contact-card {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible .contact-card {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+section.visible .contact-card:nth-child(1) { transition-delay: 0.1s; }
+section.visible .contact-card:nth-child(2) { transition-delay: 0.2s; }
+section.visible .contact-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* About section image + content animations */
+.about-image-wrapper {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible .about-image-wrapper {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition-delay: 0.15s;
+}
+
+.about-content {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible .about-content {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.25s;
+}
+
+.about-mission,
+.about-expertise {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible .about-mission {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.35s;
+}
+
+section.visible .about-expertise {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.45s;
+}
+
+/* Vision quote animation */
+.vision-quote {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible .vision-quote {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.2s;
+}
+
+/* Hero stats staggered animation */
+.hero-stats .stat-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-stats.visible .stat-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-stats.visible .stat-item:nth-child(1) { transition-delay: 0.1s; }
+.hero-stats.visible .stat-item:nth-child(2) { transition-delay: 0.2s; }
+.hero-stats.visible .stat-item:nth-child(3) { transition-delay: 0.3s; }
+
+/* Hero inner elements staggered */
+.hero-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible .hero-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible .hero-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.hero-badge {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible .hero-badge {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.hero-actions {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible .hero-actions {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+/* Floating animation for skill icons after they appear */
+section.visible .skill-card .skill-icon {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+section.visible .skill-card:nth-child(odd) .skill-icon {
+    animation-delay: 1s;
+}
+
+section.visible .skill-card:nth-child(even) .skill-icon {
+    animation-delay: 0.5s;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Pulsing glow on skill icon hover */
+.skill-card:hover .skill-icon svg {
+    animation: iconGlow 0.8s ease infinite alternate;
+}
+
+@keyframes iconGlow {
+    0% { filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.3)); }
+    100% { filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6)); }
+}
+
 
 @media (max-width: 1024px) {
     .experience-grid {
