@@ -6,13 +6,14 @@
    4. Hero Section
    5. About Section
    6. Experience Section
-   7. Skills Section
-   8. Projects Section
-   9. Vision Section
-   10. Contact Section
-   11. Footer
-   12. Animations
-   13. Responsive Design
+   7. Milestones / Timeline Section
+   8. Skills Section
+   9. Projects Section
+   10. Vision Section
+   11. Contact Section
+   12. Footer
+   13. Animations
+   14. Responsive Design
    ============================================ */
 
 /* ==========================================
@@ -187,17 +188,6 @@ ul {
     justify-content: space-between;
 }
 
-.nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.03em;
-}
-
 .nav-links {
     display: flex;
     align-items: center;
@@ -335,6 +325,58 @@ ul {
     75% { transform: translate(40px, 40px) scale(1.05); }
 }
 
+/* Hero AI Decoration Particles */
+.hero-decoration {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-ai-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.2);
+    animation: aiParticleFloat 6s ease-in-out infinite;
+}
+
+.hero-ai-particle.p1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    width: 8px;
+    height: 8px;
+}
+
+.hero-ai-particle.p2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: -2s;
+    background: var(--purple);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.hero-ai-particle.p3 {
+    top: 30%;
+    right: 30%;
+    animation-delay: -4s;
+    background: var(--blue);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+    width: 5px;
+    height: 5px;
+}
+
+@keyframes aiParticleFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    25% { transform: translate(30px, -20px) scale(1.5); opacity: 1; }
+    50% { transform: translate(-20px, 30px) scale(0.8); opacity: 0.6; }
+    75% { transform: translate(20px, 20px) scale(1.2); opacity: 0.8; }
+}
+
 .hero-container {
     position: relative;
     z-index: 2;
@@ -356,6 +398,19 @@ ul {
     margin-bottom: 32px;
     animation: fadeInUp 0.8s ease forwards;
     opacity: 0;
+}
+
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: badgeDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes badgeDotPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
 }
 
 .hero-title {
@@ -386,9 +441,39 @@ ul {
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--text-secondary);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     animation: fadeInUp 0.8s ease 0.3s forwards;
     opacity: 0;
+}
+
+/* Typewriter Effect */
+.hero-typewriter {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    min-height: 2rem;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+}
+
+.typewriter-prefix {
+    color: var(--text-muted);
+}
+
+.typewriter-text {
+    color: var(--cyan);
+    font-weight: 600;
+}
+
+.typewriter-cursor {
+    color: var(--cyan);
+    animation: cursorBlink 0.8s ease infinite;
+    margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-actions {
@@ -447,6 +532,28 @@ ul {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
+}
+
+.btn-icon {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: all var(--transition-base);
+}
+
+.btn-icon:hover {
+    background: rgba(6, 182, 212, 0.1);
+    border-color: rgba(6, 182, 212, 0.3);
+    color: var(--cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.2);
 }
 
 .hero-stats {
@@ -540,28 +647,6 @@ ul {
     z-index: 2;
 }
 
-.placeholder-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    color: var(--text-secondary);
-}
-
-.placeholder-content svg {
-    opacity: 0.5;
-}
-
-.placeholder-content span {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .about-image-glow {
     position: absolute;
     width: 380px;
@@ -580,6 +665,26 @@ ul {
     50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
 
+.about-badge {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    padding: 8px 16px;
+    background: var(--gradient-2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    z-index: 3;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 .about-content h3 {
     font-family: var(--font-display);
     font-size: 1.15rem;
@@ -592,7 +697,7 @@ ul {
     font-size: 1.05rem;
     line-height: 1.8;
     color: var(--text-secondary);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .about-text strong {
@@ -741,12 +846,228 @@ ul {
 }
 
 /* ==========================================
-   7. Skills Section
+   7. Milestones / Timeline Section
+   ========================================== */
+
+.milestones {
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.milestones::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--cyan), var(--purple), transparent);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.timeline-item[data-side="left"] {
+    left: 0;
+    text-align: right;
+    transform: translateX(-40px);
+}
+
+.timeline-item[data-side="right"] {
+    left: 50%;
+    text-align: left;
+    transform: translateX(40px);
+}
+
+.timeline-item.timeline-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 28px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+}
+
+.timeline-item[data-side="left"] .timeline-marker {
+    right: -10px;
+}
+
+.timeline-item[data-side="right"] .timeline-marker {
+    left: -10px;
+}
+
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--cyan);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3), 0 0 20px rgba(6, 182, 212, 0.2);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--purple);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.3);
+    transform: scale(1.2);
+}
+
+.timeline-content {
+    padding: 24px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    width: 12px;
+    height: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    transform: rotate(45deg);
+}
+
+.timeline-item[data-side="left"] .timeline-content::before {
+    right: -7px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.timeline-item[data-side="right"] .timeline-content::before {
+    left: -7px;
+    border-right: none;
+    border-top: none;
+}
+
+.timeline-content:hover {
+    transform: translateY(-4px);
+    border-color: rgba(6, 182, 212, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    border-radius: 100px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.timeline-tags span {
+    padding: 3px 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--purple);
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   8. Skills Section
    ========================================== */
 
 .skills {
     padding: 120px 0;
     position: relative;
+}
+
+.skills-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.skill-filter-btn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+}
+
+.skill-filter-btn:hover {
+    color: var(--cyan);
+    border-color: rgba(6, 182, 212, 0.3);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.skill-filter-btn.active {
+    color: #fff;
+    background: var(--gradient-btn);
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
 }
 
 .skills-grid {
@@ -842,7 +1163,7 @@ ul {
 }
 
 /* ==========================================
-   8. Projects Section
+   9. Projects Section
    ========================================== */
 
 .projects {
@@ -998,7 +1319,7 @@ ul {
 }
 
 /* ==========================================
-   9. Vision Section
+   10. Vision Section
    ========================================== */
 
 .vision {
@@ -1112,7 +1433,7 @@ ul {
 }
 
 /* ==========================================
-   10. Contact Section
+   11. Contact Section
    ========================================== */
 
 .contact {
@@ -1134,6 +1455,24 @@ ul {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
+}
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    margin-bottom: 32px;
+}
+
+.contact-badge svg {
+    flex-shrink: 0;
 }
 
 .contact-text {
@@ -1168,6 +1507,20 @@ ul {
     border-color: rgba(6, 182, 212, 0.2);
     background: var(--bg-card-hover);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+}
+
+.contact-card-whatsapp:hover {
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(34, 197, 94, 0.1);
+}
+
+.contact-card-whatsapp .contact-card-icon {
+    color: #22c55e;
+}
+
+.contact-card-whatsapp:hover .contact-card-icon {
+    background: rgba(34, 197, 94, 0.15);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
 }
 
 .contact-card-icon {
@@ -1221,7 +1574,7 @@ ul {
 }
 
 /* ==========================================
-   11. Footer
+   12. Footer
    ========================================== */
 
 .footer {
@@ -1239,17 +1592,6 @@ ul {
 .footer-brand {
     text-align: center;
     margin-bottom: 40px;
-}
-
-.footer-logo {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 800;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.03em;
 }
 
 .footer-brand p {
@@ -1303,7 +1645,7 @@ ul {
 }
 
 /* ==========================================
-   12. Animations
+   13. Animations
    ========================================== */
 
 @keyframes fadeInUp {
@@ -1378,12 +1720,9 @@ section.visible .section-divider {
     transition-delay: 0.3s;
 }
 
-
 /* ==========================================
-   13. Responsive Design
+   14. Responsive Design
    ========================================== */
-
-
 
 /* Skill card staggered animations */
 .skill-card {
@@ -1409,6 +1748,9 @@ section.visible .skill-card:nth-child(9) { transition-delay: 0.5s; }
 section.visible .skill-card:nth-child(10) { transition-delay: 0.55s; }
 section.visible .skill-card:nth-child(11) { transition-delay: 0.6s; }
 section.visible .skill-card:nth-child(12) { transition-delay: 0.65s; }
+section.visible .skill-card:nth-child(13) { transition-delay: 0.7s; }
+section.visible .skill-card:nth-child(14) { transition-delay: 0.75s; }
+section.visible .skill-card:nth-child(15) { transition-delay: 0.8s; }
 
 /* Skill icon pop + spin entrance animation */
 .skill-icon { transition: all 0.5s ease; }
@@ -1439,6 +1781,9 @@ section.visible .skill-card:nth-child(9) .skill-icon svg { animation-delay: 0.6s
 section.visible .skill-card:nth-child(10) .skill-icon svg { animation-delay: 0.65s; }
 section.visible .skill-card:nth-child(11) .skill-icon svg { animation-delay: 0.7s; }
 section.visible .skill-card:nth-child(12) .skill-icon svg { animation-delay: 0.75s; }
+section.visible .skill-card:nth-child(13) .skill-icon svg { animation-delay: 0.8s; }
+section.visible .skill-card:nth-child(14) .skill-icon svg { animation-delay: 0.85s; }
+section.visible .skill-card:nth-child(15) .skill-icon svg { animation-delay: 0.9s; }
 
 /* Skill progress bar fill animation */
 .skill-progress {
@@ -1462,9 +1807,9 @@ section.visible .skill-card:nth-child(9) .skill-progress { transition-delay: 0.7
 section.visible .skill-card:nth-child(10) .skill-progress { transition-delay: 0.75s; }
 section.visible .skill-card:nth-child(11) .skill-progress { transition-delay: 0.8s; }
 section.visible .skill-card:nth-child(12) .skill-progress { transition-delay: 0.85s; }
-
-
-
+section.visible .skill-card:nth-child(13) .skill-progress { transition-delay: 0.9s; }
+section.visible .skill-card:nth-child(14) .skill-progress { transition-delay: 0.95s; }
+section.visible .skill-card:nth-child(15) .skill-progress { transition-delay: 1.0s; }
 
 /* Experience card staggered animations */
 .exp-card {
@@ -1482,6 +1827,8 @@ section.visible .exp-card:nth-child(1) { transition-delay: 0.1s; }
 section.visible .exp-card:nth-child(2) { transition-delay: 0.2s; }
 section.visible .exp-card:nth-child(3) { transition-delay: 0.3s; }
 section.visible .exp-card:nth-child(4) { transition-delay: 0.4s; }
+section.visible .exp-card:nth-child(5) { transition-delay: 0.5s; }
+section.visible .exp-card:nth-child(6) { transition-delay: 0.6s; }
 
 /* Project card staggered animations */
 .project-card {
@@ -1500,6 +1847,7 @@ section.visible .project-card:nth-child(2) { transition-delay: 0.2s; }
 section.visible .project-card:nth-child(3) { transition-delay: 0.3s; }
 section.visible .project-card:nth-child(4) { transition-delay: 0.4s; }
 section.visible .project-card:nth-child(5) { transition-delay: 0.5s; }
+section.visible .project-card:nth-child(6) { transition-delay: 0.6s; }
 
 /* Contact card staggered animations */
 .contact-card {
@@ -1516,6 +1864,7 @@ section.visible .contact-card {
 section.visible .contact-card:nth-child(1) { transition-delay: 0.1s; }
 section.visible .contact-card:nth-child(2) { transition-delay: 0.2s; }
 section.visible .contact-card:nth-child(3) { transition-delay: 0.3s; }
+section.visible .contact-card:nth-child(4) { transition-delay: 0.4s; }
 
 /* About section image + content animations */
 .about-image-wrapper {
@@ -1589,6 +1938,7 @@ section.visible .vision-quote {
 .hero-stats.visible .stat-item:nth-child(1) { transition-delay: 0.1s; }
 .hero-stats.visible .stat-item:nth-child(2) { transition-delay: 0.2s; }
 .hero-stats.visible .stat-item:nth-child(3) { transition-delay: 0.3s; }
+.hero-stats.visible .stat-item:nth-child(4) { transition-delay: 0.4s; }
 
 /* Hero inner elements staggered */
 .hero-title {
@@ -1667,6 +2017,479 @@ section.visible .skill-card:nth-child(even) .skill-icon {
     100% { filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6)); }
 }
 
+/* ==========================================
+   15. Preloader
+   ========================================== */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-ring {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgba(6, 182, 212, 0.1);
+    border-top-color: var(--cyan);
+    animation: preloaderSpin 1s linear infinite;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.preloader-ring-inner {
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: var(--purple);
+    animation: preloaderSpin 0.8s linear infinite reverse;
+}
+
+@keyframes preloaderSpin {
+    to { transform: rotate(360deg); }
+}
+
+.preloader-text {
+    margin-bottom: 20px;
+}
+
+.preloader-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.preloader-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.preloader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.preloader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--gradient-1);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* ==========================================
+   16. Scroll Progress Indicator
+   ========================================== */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+    z-index: 9999;
+    transform-origin: left;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+/* ==========================================
+   17. Cursor Glow Effect
+   ========================================== */
+
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-150px, -150px);
+    will-change: transform;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.cursor-glow--active {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.12), transparent 70%);
+}
+
+/* ==========================================
+   18. Particles Canvas
+   ========================================== */
+
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure section content stays above particles */
+.navbar,
+.hero,
+.about,
+.experience,
+.milestones,
+.skills,
+.projects,
+.vision,
+.contact,
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   19. Navbar Enhanced States
+   ========================================== */
+
+.navbar--scrolled {
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(6, 182, 212, 0.1) !important;
+}
+
+.navbar--hidden {
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+}
+
+/* ==========================================
+   20. Nav Active Link
+   ========================================== */
+
+.nav-link--active {
+    color: var(--cyan) !important;
+}
+
+.nav-link--active::after {
+    width: 100% !important;
+    background: var(--gradient-1) !important;
+}
+
+/* ==========================================
+   21. About Image Floating & Parallax
+   ========================================== */
+
+.about-image-wrapper {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.about-image--float {
+    animation: aboutFloat 4s ease-in-out infinite;
+}
+
+@keyframes aboutFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ==========================================
+   22. Skill Card Premium (Pulse Effect)
+   ========================================== */
+
+.skill-card--premium {
+    position: relative;
+}
+
+.skill-card--premium::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), transparent, rgba(139, 92, 246, 0.2));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: premiumPulse 3s ease-in-out infinite;
+}
+
+.skill-card--premium:hover::after {
+    opacity: 1;
+}
+
+@keyframes premiumPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* ==========================================
+   23. Project Card Tilt Enhancements
+   ========================================== */
+
+.project-card {
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.project-card-glow {
+    transition: transform 0.3s ease-out;
+}
+
+/* ==========================================
+   24. Experience Cards - Alternating Direction
+   ========================================== */
+
+.exp-card {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+}
+
+.exp-card--left {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.exp-card--right {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+.exp-card--visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+/* Exp card hover glow follow */
+.exp-card::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: translate(calc(var(--mouse-x, 0) - 100px), calc(var(--mouse-y, 0) - 100px));
+    z-index: 0;
+}
+
+.exp-card:hover::after {
+    opacity: 1;
+}
+
+.exp-card .exp-icon,
+.exp-card h3,
+.exp-card p {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   25. Button Enhancements (Glow & Ripple)
+   ========================================== */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn--hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 8px 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(6, 182, 212, 0.15) !important;
+}
+
+.btn-secondary.btn--hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 40px rgba(6, 182, 212, 0.15) !important;
+}
+
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: btnRipple 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes btnRipple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   26. Footer Reveal Animation
+   ========================================== */
+
+.footer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.footer--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   27. Hero Badge Pulse
+   ========================================== */
+
+.hero-badge--pulse {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* ==========================================
+   28. Hero Subtitle Typed Effect
+   ========================================== */
+
+.hero-subtitle--typed {
+    animation: subtitleGlow 2s ease infinite;
+}
+
+@keyframes subtitleGlow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+}
+
+/* ==========================================
+   29. Expertise Tags Staggered Reveal
+   ========================================== */
+
+.expertise-tags span {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: var(--tag-delay, 0s);
+}
+
+.expertise-tags--visible span {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ==========================================
+   30. Vision Quote Reveal
+   ========================================== */
+
+.vision-quote--reveal {
+    animation: visionReveal 1s ease forwards;
+}
+
+@keyframes visionReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+        letter-spacing: -0.02em;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        letter-spacing: 0;
+    }
+}
+
+/* ==========================================
+   31. Respect Reduced Motion
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .cursor-glow {
+        display: none !important;
+    }
+
+    #particles-canvas {
+        display: none !important;
+    }
+
+    .preloader {
+        display: none !important;
+    }
+}
+
+/* ==========================================
+   32. Image Styles
+   ========================================== */
+
+/* Navigation logo image */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo .logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+/* About section image */
+.about-image-placeholder .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Footer logo image */
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-logo .footer-logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 4px;
+}
+
+/* ==========================================
+   33. Media Queries
+   ========================================== */
 
 @media (max-width: 1024px) {
     .experience-grid {
@@ -1679,6 +2502,39 @@ section.visible .skill-card:nth-child(even) .skill-icon {
 
     .project-card-featured {
         grid-column: 1 / -1;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 20px;
+    }
+
+    .timeline-item[data-side="left"],
+    .timeline-item[data-side="right"] {
+        left: 0;
+        text-align: left;
+        transform: translateX(0);
+    }
+
+    .timeline-item[data-side="left"] .timeline-marker,
+    .timeline-item[data-side="right"] .timeline-marker {
+        left: 10px;
+        right: auto;
+    }
+
+    .timeline-item[data-side="left"] .timeline-content::before,
+    .timeline-item[data-side="right"] .timeline-content::before {
+        left: -7px;
+        right: auto;
+        border-right: none;
+        border-top: none;
+        border-left: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
     }
 }
 
@@ -1739,6 +2595,10 @@ section.visible .skill-card:nth-child(even) .skill-icon {
         height: 300px;
     }
 
+    .about-badge {
+        right: 0;
+    }
+
     /* Experience */
     .experience-grid {
         grid-template-columns: 1fr;
@@ -1747,6 +2607,15 @@ section.visible .skill-card:nth-child(even) .skill-icon {
     /* Skills */
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-filter {
+        gap: 8px;
+    }
+
+    .skill-filter-btn {
+        font-size: 0.7rem;
+        padding: 6px 14px;
     }
 
     /* Projects */
@@ -1799,6 +2668,10 @@ section.visible .skill-card:nth-child(even) .skill-icon {
     .contact-card {
         flex-wrap: wrap;
     }
+
+    .timeline-item {
+        padding-left: 40px;
+    }
 }
 
 /* Nav toggle active state for hamburger animation */
@@ -1813,40 +2686,3 @@ section.visible .skill-card:nth-child(even) .skill-icon {
 .nav-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
-
-/* ==========================================
-    14. Image Styles
-    ========================================== */
-
-/* Navigation logo image */
-.nav-logo {
-    display: flex;
-    align-items: center;
-}
-
-.nav-logo .logo-img {
-    height: 40px;
-    width: auto;
-    border-radius: 4px;
-}
-
-/* About section image */
-.about-image-placeholder .about-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Footer logo image */
-.footer-logo {
-    display: inline-flex;
-    align-items: center;
-}
-
-.footer-logo .footer-logo-img {
-    height: 50px;
-    width: auto;
-    border-radius: 4px;
-}
-
