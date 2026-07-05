@@ -76,6 +76,28 @@ html {
     scroll-padding-top: 80px;
 }
 
+/* Performance: content-visibility on below-fold sections */
+.about,
+.experience,
+.milestones,
+.skills,
+.projects,
+.vision,
+.contact,
+.footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+    contain: layout style paint;
+}
+
+.milestones {
+    contain-intrinsic-size: 1300px;
+}
+
+.hero {
+    contain: layout style;
+}
+
 body {
     font-family: var(--font-primary);
     background: var(--bg-primary);
