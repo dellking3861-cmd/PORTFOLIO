@@ -1,0 +1,16 @@
+{
+"name":"Muhammad Wasi Portfolio",
+"short_name":"Muhammad Wasi",
+"description":"AI Engineer, Educator and EdTech Entrepreneur",
+"start_url":"/",
+"display":"standalone",
+"background_color":"#0f172a",
+"theme_color":"#0f172a",
+"icons":[
+ {
+  "src":"/images/optimized/my-profile.webp",
+  "sizes":"512x512",
+  "type":"image/webp"
+ }
+]
+}
