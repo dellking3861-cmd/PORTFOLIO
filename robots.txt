@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dellking3861-cmd.github.io/PORTFOLIO/sitemap.xml
-
-# Disallow admin or private directories (if any)
-# Disallow: /private/
+Sitemap: https://wasi-kherro-portfolio.vercel.app/sitemap.xml
