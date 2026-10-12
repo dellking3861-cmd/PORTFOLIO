@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <noscript>
+        <style>
+            section { opacity: 1 !important; transform: none !important; }
+            .section-header, .section-tag, .section-title, .section-divider { opacity: 1 !important; transform: none !important; }
+            .preloader { display: none !important; }
+        </style>
+    </noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Wasi | AI Engineer, Educator & EdTech Entrepreneur</title>
@@ -30,8 +37,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="preload" as="image" href="images/optimized/the-classes-logo.webp" type="image/webp">
     <link rel="preload" as="image" href="images/optimized/my-profile.webp" type="image/webp">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/favicon-192x192.png">
     <style>
         /* Critical CSS inlined for instant FCP */
         :root{--bg-primary:#0f172a;--cyan:#06b6d4;--blue:#3b82f6;--purple:#8b5cf6;--gradient-text:linear-gradient(135deg,#06b6d4 0%,#3b82f6 50%,#8b5cf6 100%);--text-primary:#f1f5f9;--text-secondary:#94a3b8;--font-display:'Space Grotesk','Inter',sans-serif;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-primary);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}.preloader{position:fixed;inset:0;z-index:10000;background:var(--bg-primary);display:flex;align-items:center;justify-content:center}.preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s ease,visibility .4s ease}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;background:rgba(15,23,42,0.8);transition:background .3s ease}.section-container{max-width:1200px;margin:0 auto;padding:0 24px}.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;overflow:hidden}.hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:24px}.gradient-text{background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -83,7 +92,7 @@
             <a href="#" class="nav-logo">
                 <picture>
                     <source srcset="images/optimized/the-classes-logo.webp" type="image/webp">
-                    <img src="images/optimized/the-classes-logo.jpg" alt="The Classes Logo" class="logo-img" width="80" height="40" loading="eager" decoding="sync">
+                    <img src="images/optimized/the-classes-logo.jpg" alt="The Classes Logo" class="logo-img" width="80" height="80" loading="eager" decoding="sync">
                 </picture>
             </a>
             <ul class="nav-links">
@@ -95,11 +104,11 @@
                 <li><a href="#vision">Vision</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -171,7 +180,7 @@
                     <div class="about-image-placeholder">
                         <picture>
                             <source srcset="images/optimized/my-profile.webp" type="image/webp">
-                            <img src="images/optimized/my-profile.jpg" alt="Muhammad Wasi - Profile" class="about-img" width="320" height="320" loading="lazy" decoding="async">
+                            <img src="images/optimized/my-profile.jpg" alt="Muhammad Wasi - Profile" class="about-img" width="320" height="481" loading="lazy" decoding="async">
                         </picture>
                     </div>
                     <div class="about-image-glow"></div>
@@ -231,6 +240,12 @@
                     </div>
                     <h3>Grade 9 & 10</h3>
                     <p>Secondary level Mathematics, Physics, Chemistry & Computer Science across AKU, FBISE, BSEK, BIEK streams</p>
+                    <div class="exp-badges">
+                        <span>AKU-EB</span>
+                        <span>FBISE</span>
+                        <span>BSEK</span>
+                        <span>BIEK</span>
+                    </div>
                 </div>
                 <div class="exp-card">
                     <div class="exp-icon">
@@ -238,6 +253,11 @@
                     </div>
                     <h3>Higher Secondary</h3>
                     <p>XI-XII Mathematics, Physics instruction with comprehensive exam preparation across all major boards</p>
+                    <div class="exp-badges">
+                        <span>Class XI-XII</span>
+                        <span>Math & Physics</span>
+                        <span>Board Exams</span>
+                    </div>
                 </div>
                 <div class="exp-card">
                     <div class="exp-icon">
@@ -245,6 +265,11 @@
                     </div>
                     <h3>O Level & A Level</h3>
                     <p>Cambridge International curriculum: Mathematics, Additional Mathematics, Physics, Statistics</p>
+                    <div class="exp-badges">
+                        <span>Cambridge</span>
+                        <span>Add Maths</span>
+                        <span>Statistics</span>
+                    </div>
                 </div>
                 <div class="exp-card">
                     <div class="exp-icon">
@@ -252,6 +277,11 @@
                     </div>
                     <h3>AKU-EB & IB</h3>
                     <p>Aga Khan University Examination Board prep and International Baccalaureate Mathematics</p>
+                    <div class="exp-badges">
+                        <span>AKU-EB</span>
+                        <span>IB Diploma</span>
+                        <span>Critical Thinking</span>
+                    </div>
                 </div>
                 <div class="exp-card">
                     <div class="exp-icon">
@@ -259,6 +289,12 @@
                     </div>
                     <h3>University Test Prep</h3>
                     <p>NED, FAST, NUST, IBA, Karachi University entrance exam prep (80%+ success rate)</p>
+                    <div class="exp-badges">
+                        <span>NED</span>
+                        <span>FAST</span>
+                        <span>NUST</span>
+                        <span>IBA</span>
+                    </div>
                 </div>
                 <div class="exp-card">
                     <div class="exp-icon">
@@ -266,6 +302,11 @@
                     </div>
                     <h3>AI & EdTech</h3>
                     <p>Building AI-powered SaaS, automation systems, chatbots, and voice agents for education</p>
+                    <div class="exp-badges">
+                        <span>AI Automation</span>
+                        <span>SaaS</span>
+                        <span>EdTech</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -840,7 +881,7 @@
                 <a href="#" class="footer-logo">
                     <picture>
                         <source srcset="images/optimized/the-classes-logo.webp" type="image/webp">
-                        <img src="images/optimized/the-classes-logo.jpg" alt="The Classes Logo" class="footer-logo-img" width="80" height="50" loading="lazy" decoding="async">
+                        <img src="images/optimized/the-classes-logo.jpg" alt="The Classes Logo" class="footer-logo-img" width="80" height="80" loading="lazy" decoding="async">
                     </picture>
                 </a>
                 <p>Building Smarter Education with AI</p>

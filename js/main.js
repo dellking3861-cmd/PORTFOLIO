@@ -267,22 +267,33 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     const navLinks = document.querySelector('.nav-links');
     if (!navToggle || !navLinks) return;
 
+    function setMenuState(isOpen) {
+        navLinks.classList.toggle('active', isOpen);
+        navToggle.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
     navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        navToggle.classList.toggle('active');
+        const isOpen = navLinks.classList.contains('active');
+        setMenuState(!isOpen);
     });
 
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
+            setMenuState(false);
         });
     });
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.navbar')) {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
+            setMenuState(false);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            setMenuState(false);
+            navToggle.focus();
         }
     });
 })();
