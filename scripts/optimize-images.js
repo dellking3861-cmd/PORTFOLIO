@@ -10,8 +10,8 @@ if (!fs.existsSync(outputDir)) {
 }
 
 const images = [
-    { name: 'my profile.jfif', outputName: 'my-profile', width: 320 },
-    { name: 'the classes logo.jpg', outputName: 'the-classes-logo', width: 80 }
+    // 640px so the photo stays sharp on 2x screens (shown at up to 260 CSS px)
+    { name: 'my profile.jfif', outputName: 'my-profile', width: 640 }
 ];
 
 async function optimize() {

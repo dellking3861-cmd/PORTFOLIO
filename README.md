@@ -1,7 +1,7 @@
-# Muhammad Wasi — AI Engineer | EdTech Entrepreneur | Educator
+# Muhammad Wasi — Educator & SaaS / Automation Engineer
 
 <p align="center">
-  <img src="https://wasi-kherro-portfolio.vercel.app/images/optimized/my-profile.webp" width="160" alt="Muhammad Wasi AI Engineer and EdTech Entrepreneur">
+  <img src="https://wasi-kherro-portfolio.vercel.app/images/optimized/my-profile.webp" width="160" alt="Portrait of Muhammad Wasi">
 </p>
 
 <h3 align="center">
@@ -18,7 +18,7 @@ Building AI-powered education solutions at the intersection of technology, engin
 
 ## About Me
 
-I am **Muhammad Wasi**, an **AI Engineer, Mechanical Engineer, Educator, and EdTech Entrepreneur** passionate about using artificial intelligence and software solutions to transform education.
+I am **Muhammad Wasi**, a **Mechanical Engineer, Educator, and SaaS / Automation Engineer** passionate about using artificial intelligence and software solutions to transform education.
 
 I specialize in building technology-driven learning systems, AI automation workflows, and SaaS applications while combining my engineering background with years of teaching experience.
 
@@ -187,5 +187,5 @@ https://github.com/dellking3861-cmd
 ---
 
 <p align="center">
-Building the future of education through AI, engineering, and innovation.
+Teaching maths and physics, and building software that helps students learn.
 </p>
