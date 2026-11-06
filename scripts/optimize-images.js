@@ -11,7 +11,8 @@ if (!fs.existsSync(outputDir)) {
 
 const images = [
     // 640px so the photo stays sharp on 2x screens (shown at up to 260 CSS px)
-    { name: 'my profile.jfif', outputName: 'my-profile', width: 640 }
+    { name: 'my profile.jfif', outputName: 'my-profile', width: 640 },
+    { name: 'poster.jpg', outputName: 'poster', width: 1024 }
 ];
 
 async function optimize() {

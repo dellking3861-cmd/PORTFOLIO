@@ -10,6 +10,7 @@
     --gold-deep: #d9a032;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --font-display: 'Space Grotesk', var(--font-body);
+    --font-poster: 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -21,11 +22,7 @@ body {
     color: var(--text);
     font: 400 1.0625rem/1.65 var(--font-body);
     -webkit-font-smoothing: antialiased;
-    background:
-        radial-gradient(900px 520px at 85% -10%, rgb(59 130 246 / .22), transparent 65%),
-        radial-gradient(600px 420px at -5% 5%, rgb(245 196 81 / .08), transparent 60%),
-        var(--bg);
-    background-repeat: no-repeat;
+    background: var(--bg);
 }
 
 h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; margin: 0; }
@@ -57,9 +54,8 @@ a:hover { color: var(--gold); }
 .nav ul a { color: var(--muted); text-decoration: none; font-size: .95rem; white-space: nowrap; }
 .nav ul a:hover { color: var(--gold); }
 
-/* ---- Layout ---- */
-main { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
-section { padding: 5rem 0; border-top: 1px solid var(--border); }
+/* ---- Layout: each section limits its own width so the poster can go edge to edge ---- */
+main > section { max-width: 1080px; margin: 0 auto; padding: 5rem 1.25rem; border-top: 1px solid var(--border); }
 section h2 { font-size: 1.9rem; margin-bottom: 2.25rem; }
 section h2::after {
     content: ""; display: block; width: 2.5rem; height: 3px; margin-top: .6rem;
@@ -67,20 +63,53 @@ section h2::after {
 }
 section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
 
-/* ---- Hero ---- */
-.hero {
-    border-top: 0; padding: 5rem 0 4.5rem;
-    display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: center;
-}
 .eyebrow { color: var(--gold); font-weight: 500; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; }
-.hero h1 { font-size: clamp(2.6rem, 6.5vw, 4.25rem); margin-bottom: 1.25rem; letter-spacing: -.01em; }
-.hero h1 span {
-    color: var(--gold);
+
+/* ---- Poster (series-poster style hero) ---- */
+main > .poster {
+    position: relative; isolation: isolate; overflow: hidden;
+    max-width: none; min-height: calc(100svh - 3.6rem);
+    padding: 0 1.25rem 6rem; border-top: 0;
+    display: flex; align-items: flex-end;
+    view-timeline: --poster;
+}
+.poster-img { position: absolute; inset: 0 0 0 auto; width: min(62%, 820px); z-index: -2; }
+.poster-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.poster::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+        linear-gradient(to top, var(--bg) 0%, rgb(7 11 20 / .55) 30%, transparent 60%),
+        linear-gradient(to right, var(--bg) 38%, rgb(7 11 20 / .6) 55%, transparent 75%),
+        radial-gradient(600px 400px at 15% 20%, rgb(245 196 81 / .10), transparent 70%);
+}
+.poster-text { width: 100%; max-width: 1080px; margin: 0 auto; }
+.poster h1 {
+    font: 400 clamp(4.5rem, 13vw, 10rem)/.86 var(--font-poster);
+    letter-spacing: .02em; text-transform: uppercase; margin: .25rem 0 1.25rem;
+    text-shadow: 0 10px 40px rgb(0 0 0 / .6);
+}
+.poster h1 span {
+    display: block; color: var(--gold);
     background: linear-gradient(100deg, #ffe7a3, var(--gold) 45%, var(--gold-deep));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
+.tagline { font-size: clamp(1.15rem, 2.2vw, 1.45rem); color: var(--text); max-width: 30rem; }
+.poster-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .9rem; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+.poster-meta strong { color: var(--gold); font-weight: 600; }
+.poster-meta span::before { content: "•"; margin-right: 1.1rem; color: var(--gold-deep); }
+.scroll-cue {
+    position: absolute; left: 50%; bottom: 1.5rem; width: 1.6rem; height: 2.6rem; margin-left: -.8rem;
+    border: 2px solid rgb(230 236 247 / .45); border-radius: 1rem;
+}
+.scroll-cue::after {
+    content: ""; position: absolute; left: 50%; top: .45rem; width: 4px; height: 8px; margin-left: -2px;
+    border-radius: 2px; background: var(--gold);
+}
+
+/* ---- Intro (text + maths/physics/AI graphic) ---- */
+main > .intro { border-top: 0; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: center; }
 .lead { font-size: 1.3rem; }
-.hero-text p:not(.lead):not(.eyebrow) { color: var(--muted); }
+.intro-text p:not(.lead) { color: var(--muted); }
 
 .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0 2.75rem; }
 .btn {
@@ -99,7 +128,7 @@ section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
 .facts li { color: var(--muted); font-size: .9rem; max-width: 10rem; }
 .facts strong { display: block; color: var(--gold); font: 700 1.9rem var(--font-display); }
 
-/* ---- Hero motion graphic ---- */
+/* ---- Motion graphic ---- */
 .hero-art { width: 100%; max-width: 520px; justify-self: end; color: #15213a; overflow: visible; }
 .axis { fill: none; stroke: #2b3f66; stroke-width: 1.2; }
 .edges { stroke: #22355a; stroke-width: 1.2; }
@@ -168,13 +197,13 @@ section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
 
 /* ---- Motion (only for people who have not asked for reduced motion) ---- */
 @media (prefers-reduced-motion: no-preference) {
-    /* Hero slides in by transform only: if the animation never runs, the text is still readable. */
-    .hero-text > * { animation: slide .7s cubic-bezier(.2, .7, .2, 1) both; }
-    .hero-text > :nth-child(2) { animation-delay: .08s; }
-    .hero-text > :nth-child(3) { animation-delay: .16s; }
-    .hero-text > :nth-child(4) { animation-delay: .24s; }
-    .hero-text > :nth-child(5) { animation-delay: .32s; }
-    .hero-text > :nth-child(6) { animation-delay: .4s; }
+    /* Load-in uses transform only: if it never runs, everything is still visible. */
+    .poster-img { animation: settle 2.4s cubic-bezier(.2, .7, .2, 1) both; }
+    .poster-text > * { animation: slide .8s cubic-bezier(.2, .7, .2, 1) both; }
+    .poster-text > :nth-child(2) { animation-delay: .1s; }
+    .poster-text > :nth-child(3) { animation-delay: .2s; }
+    .poster-text > :nth-child(4) { animation-delay: .3s; }
+    .scroll-cue::after { animation: cue 1.8s ease-in-out infinite; }
 
     .wave { animation: draw 2.4s .3s ease-in-out both; }
     .pulses { animation: signal 2.2s linear infinite; }
@@ -187,7 +216,11 @@ section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
     .symbols text:nth-child(3n) { animation-duration: 11s; animation-delay: -5s; }
 
     @supports (animation-timeline: view()) {
-        main > section:not(.hero) > * {
+        /* Scrolling past the poster: the photo pushes in and darkens, the title rises away. */
+        .poster-img img { animation: push-in linear both; animation-timeline: --poster; animation-range: exit 0% exit 100%; }
+        .poster-text { animation: lift linear both; animation-timeline: --poster; animation-range: exit 0% exit 70%; }
+
+        main > section:not(.poster) > * {
             animation: rise linear both;
             animation-timeline: view();
             animation-range: entry 0% entry 55%;
@@ -203,6 +236,10 @@ section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
 
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } }
 @keyframes slide { from { transform: translateY(18px); } }
+@keyframes settle { from { transform: scale(1.08); } }
+@keyframes push-in { to { transform: scale(1.18); filter: brightness(.35) saturate(.8); } }
+@keyframes lift { to { transform: translateY(-140px); opacity: 0; } }
+@keyframes cue { 50% { transform: translateY(10px); opacity: .3; } }
 @keyframes draw { from { stroke-dashoffset: 1; } }
 @keyframes signal { to { stroke-dashoffset: 0; } }
 @keyframes blink { 50% { fill: var(--surface); stroke: var(--blue); } }
@@ -211,16 +248,20 @@ section h3 { font-size: 1.1rem; margin-bottom: .35rem; }
 
 /* ---- Smaller screens ---- */
 @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+    .poster-img { width: 100%; }
+    .poster-img img { object-position: 50% 12%; }
+    .poster::before {
+        background: linear-gradient(to top, var(--bg) 8%, rgb(7 11 20 / .75) 40%, rgb(7 11 20 / .15) 75%);
+    }
+    main > .intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .hero-art { justify-self: center; max-width: 420px; }
 }
 @media (max-width: 640px) {
     .nav { flex-direction: column; align-items: flex-start; gap: .5rem; padding: .7rem 1rem; }
     .nav ul { width: 100%; gap: .9rem; }
     .nav ul a { font-size: .875rem; }
-    main { padding: 0 1rem; }
-    section { padding: 3.75rem 0; }
-    .hero { padding-top: 3rem; }
+    main > section { padding: 3.75rem 1rem; }
+    main > .poster { padding-bottom: 5rem; min-height: calc(100svh - 5.5rem); }
     .about { grid-template-columns: 1fr; }
     .about img { max-width: 220px; }
     .timeline li { grid-template-columns: 1fr; gap: .25rem; }

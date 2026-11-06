@@ -23,7 +23,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
     <link rel="stylesheet" href="style.css">
 
     <script type="application/ld+json">
@@ -62,10 +62,22 @@
     </header>
 
     <main id="main">
-        <section class="hero" id="top">
-            <div class="hero-text">
-            <p class="eyebrow">Educator · Engineer · Builder</p>
-            <h1>Muhammad <span>Wasi</span></h1>
+        <section class="poster" id="top">
+            <picture class="poster-img">
+                <source srcset="images/optimized/poster.webp" type="image/webp">
+                <img src="images/optimized/poster.jpg" alt="Cinematic AI-styled portrait of Muhammad Wasi" width="1024" height="1536" fetchpriority="high">
+            </picture>
+            <div class="poster-text">
+                <p class="eyebrow">Educator · Engineer · Builder</p>
+                <h1>Muhammad <span>Wasi</span></h1>
+                <p class="tagline">Teaching minds. Building intelligent tools.</p>
+                <p class="poster-meta"><strong>Since 2017</strong><span>Maths</span><span>Physics</span><span>AI</span></p>
+            </div>
+            <a href="#intro" class="scroll-cue" aria-label="Scroll to introduction"></a>
+        </section>
+
+        <section class="intro" id="intro">
+            <div class="intro-text">
             <p class="lead">I teach maths and physics, and I build software that makes teaching and learning work better.</p>
             <p>Mechanical engineer from NED University. Teaching since 2017, co-founder of <strong>The Classes</strong>, and since 2025 a SaaS engineer at KeieiSol building AI and automation tools.</p>
             <div class="actions">
