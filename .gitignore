@@ -3,3 +3,22 @@ node_modules/
 .DS_Store
 Thumbs.db
 .claude/
+# Added by code-review-graph
+.code-review-graph/
+# Local AI-tool config: keep off the public site
+.mcp.json
+.codebuddy/
+.codex/
+.cursor/
+.cursorrules
+.gemini/
+.github/
+.kiro/
+.qoder/
+.windsurfrules
+AGENTS.md
+CLAUDE.md
+CODEBUDDY.md
+GEMINI.md
+QODER.md
+opencode.jsonc

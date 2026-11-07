@@ -1,4 +1,4 @@
-# Muhammad Wasi — Educator & SaaS / Automation Engineer
+# Muhammad Wasi — Maths & Physics Educator · Automation & Web Freelancer
 
 <p align="center">
   <img src="https://wasi-kherro-portfolio.vercel.app/images/optimized/my-profile.webp" width="160" alt="Portrait of Muhammad Wasi">
@@ -18,7 +18,7 @@ Building AI-powered education solutions at the intersection of technology, engin
 
 ## About Me
 
-I am **Muhammad Wasi**, a **Mechanical Engineer, Educator, and SaaS / Automation Engineer** passionate about using artificial intelligence and software solutions to transform education.
+I am **Muhammad Wasi**, a **Mechanical Engineer, Maths & Physics Educator, and Automation & Web Freelancer** passionate about using artificial intelligence and software solutions to transform education.
 
 I specialize in building technology-driven learning systems, AI automation workflows, and SaaS applications while combining my engineering background with years of teaching experience.
 

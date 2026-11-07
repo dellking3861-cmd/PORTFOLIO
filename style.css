@@ -207,6 +207,8 @@ main > .intro { border-top: 0; display: grid; grid-template-columns: 1.05fr 1fr;
     border: 1px solid #22355a; background: rgb(96 165 250 / .06);
 }
 .links a:hover { border-color: var(--gold); }
+/* Arrow is visual only; the "/ ''" alt text keeps screen readers from saying "north-east arrow". */
+.links a::after { content: " ↗"; content: " ↗" / ""; }
 
 /* ---- Skills ---- */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
