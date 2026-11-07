@@ -152,19 +152,42 @@ main > .intro { border-top: 0; display: grid; grid-template-columns: 1.05fr 1fr;
 .about img { border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 20px 50px -25px rgb(59 130 246 / .5); }
 
 /* ---- Experience ---- */
-.timeline { border-left: 1px solid var(--border); margin-left: .35rem; }
-.timeline li {
-    position: relative;
-    display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem;
-    padding: 1.25rem 0 1.25rem 1.75rem;
+/* Teaching roles are gold, everything else blue: --c drives the dot, tag and hover. */
+.timeline { position: relative; margin-left: .35rem; padding-left: 1.75rem; }
+.timeline::before {
+    content: ""; position: absolute; left: 0; top: .5rem; bottom: .5rem; width: 2px;
+    background: linear-gradient(var(--gold), var(--blue) 60%, transparent);
+    opacity: .5;
 }
+.timeline li { --c: var(--blue); position: relative; display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.25rem; padding: .6rem 0; }
+.timeline li.teach { --c: var(--gold); }
 .timeline li::before {
-    content: ""; position: absolute; left: -5px; top: 1.65rem;
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--bg); border: 2px solid var(--gold);
+    content: ""; position: absolute; left: calc(-1.75rem - 4px); top: 1.85rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--c);
 }
-.timeline p { margin: 0; color: var(--muted); }
-.timeline .when { font-size: .9rem; padding-top: .15rem; color: var(--gold); opacity: .85; }
+.when {
+    align-self: start; margin: 1.05rem 0 0; justify-self: start;
+    padding: .2rem .7rem; border-radius: 999px; font-size: .82rem; white-space: nowrap;
+    color: var(--gold); background: rgb(245 196 81 / .08); border: 1px solid rgb(245 196 81 / .25);
+}
+.when.now::before {
+    content: ""; display: inline-block; width: 6px; height: 6px; margin-right: .45rem; vertical-align: middle;
+    border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80;
+}
+.job {
+    background: linear-gradient(160deg, #101b31, var(--surface));
+    border: 1px solid var(--border); border-left: 3px solid var(--c); border-radius: 12px;
+    padding: 1.1rem 1.3rem; transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.job:hover { transform: translateX(4px); border-color: var(--c); box-shadow: 0 14px 34px -20px var(--c); }
+.job p { margin: 0 0 .6rem; color: var(--muted); }
+.job .org { color: var(--text); font-size: .95rem; opacity: .85; margin-bottom: .5rem; }
+.tag {
+    display: inline-block; padding: .15rem .65rem; border-radius: 999px; font-size: .75rem;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--c);
+    border: 1px solid color-mix(in srgb, var(--c) 40%, transparent);
+}
 .note { margin-top: 2rem; color: var(--muted); }
 
 /* ---- Projects ---- */
@@ -177,6 +200,13 @@ main > .intro { border-top: 0; display: grid; grid-template-columns: 1.05fr 1fr;
 .cards li:hover { transform: translateY(-4px); border-color: rgb(245 196 81 / .45); box-shadow: 0 16px 40px -18px rgb(59 130 246 / .55); }
 .cards p { color: var(--muted); font-size: .97rem; }
 .cards .meta { margin: 0; font-size: .85rem; color: var(--gold); }
+.cards .wide { grid-column: 1 / -1; }
+.links { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; }
+.links a {
+    padding: .3rem .75rem; border-radius: 8px; font-size: .88rem; text-decoration: none;
+    border: 1px solid #22355a; background: rgb(96 165 250 / .06);
+}
+.links a:hover { border-color: var(--gold); }
 
 /* ---- Skills ---- */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
@@ -264,5 +294,7 @@ main > .intro { border-top: 0; display: grid; grid-template-columns: 1.05fr 1fr;
     main > .poster { padding-bottom: 5rem; min-height: calc(100svh - 5.5rem); }
     .about { grid-template-columns: 1fr; }
     .about img { max-width: 220px; }
-    .timeline li { grid-template-columns: 1fr; gap: .25rem; }
+    .timeline li { grid-template-columns: 1fr; gap: .4rem; }
+    .timeline li::before { top: 1.45rem; }
+    .when { margin-top: .6rem; }
 }
