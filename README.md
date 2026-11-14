@@ -10,7 +10,7 @@ Building AI-powered education solutions at the intersection of technology, engin
 
 <p align="center">
   <a href="https://wasi-kherro-portfolio.vercel.app/">Portfolio</a> •
-  <a href="https://www.linkedin.com/in/wasikherro3861">LinkedIn</a> •
+  <a href="https://www.linkedin.com/in/wasi-kherro">LinkedIn</a> •
   <a href="mailto:wasikherro@gmail.com">Email</a>
 </p>
 
@@ -176,7 +176,7 @@ I am currently exploring:
 https://wasi-kherro-portfolio.vercel.app/
 
 💼 LinkedIn
-https://www.linkedin.com/in/wasikherro3861
+https://www.linkedin.com/in/wasi-kherro
 
 💻 GitHub
 https://github.com/dellking3861-cmd
