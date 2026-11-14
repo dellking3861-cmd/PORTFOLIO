@@ -7,6 +7,7 @@ Thumbs.db
 .code-review-graph/
 # Local AI-tool config: keep off the public site
 .mcp.json
+.agents/
 .codebuddy/
 .codex/
 .cursor/
